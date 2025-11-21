@@ -1,6 +1,6 @@
 {
   "name": "fsd-react-native-template",
-  "main": "./src/app/index.tsx",
+  "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
@@ -16,6 +16,7 @@
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
     "@tailwindcss/postcss": "^4.1.17",
+    "@tanstack/react-query": "^5.90.10",
     "expo": "~54.0.25",
     "expo-constants": "~18.0.10",
     "expo-font": "~14.0.9",
