@@ -1,9 +1,5 @@
-import { View, Text } from "react-native";
+import { CartPage } from "@/pages";
 
 export default function CartScreen() {
-  return (
-    <View>
-      <Text className="text-red-500">cart</Text>
-    </View>
-  );
+    return <CartPage />;
 }

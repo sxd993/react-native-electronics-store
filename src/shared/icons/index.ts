@@ -1,0 +1,1 @@
+export { CartTabIcon } from "./CartTabIcon";

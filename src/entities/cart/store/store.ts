@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import type { CartItem } from '../model/cart.types';
-import { addItem, changeItemQty, clearItems, removeItem } from './CartActions';
 
 export type CartState = {
     items: CartItem[];
@@ -21,8 +20,26 @@ const initialState: CartState = {
 
 export const useCartStore = create<CartStore>((set) => ({
     ...initialState,
-    add: (item) => set(({ items }) => ({ items: addItem(items, item) })),
-    remove: (id) => set(({ items }) => ({ items: removeItem(items, id) })),
-    changeQty: (id, qty) => set(({ items }) => ({ items: changeItemQty(items, id, qty) })),
-    clear: () => set(() => ({ items: clearItems() })),
+    add: (item) =>
+        set(({ items }) => {
+            const existing = items.find((i) => i.id === item.id);
+            if (existing) {
+                return { items: items.map((i) => (i.id === item.id ? { ...i, qty: i.qty + item.qty } : i)) };
+            }
+            return { items: [...items, item] };
+        }),
+    remove: (id) => set(({ items }) => ({ items: items.filter((i) => i.id !== id) })),
+    changeQty: (id, qty) =>
+        set(({ items }) => ({
+            items: items.map((i) => (i.id === id ? { ...i, qty: Math.max(qty, 1) } : i)),
+        })),
+    clear: () => set(() => ({ items: [] })),
 }));
+
+export const useCartItems = () => useCartStore((state) => state.items);
+
+export const useCartTotalQty = () =>
+    useCartStore((state) => state.items.reduce((sum, item) => sum + item.qty, 0));
+
+export const useCartTotalPrice = () =>
+    useCartStore((state) => state.items.reduce((sum, item) => sum + item.qty * item.price, 0));

@@ -1,5 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { CartTabIcon } from "@/shared/icons";
+
 
 export default function TabsLayout() {
     return (
@@ -30,9 +32,7 @@ export default function TabsLayout() {
                 name="cart"
                 options={{
                     title: "Корзина",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="cart-outline" color={color} size={size} />
-                    ),
+                    tabBarIcon: ({ color, size }) => <CartTabIcon color={color} size={size} />,
                 }}
             />
         </Tabs>

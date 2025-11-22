@@ -1,7 +1,15 @@
-import { Text } from "react-native";
+import { ProductList } from "@/features/get-product-list/ui/ProductList";
+import { Text, View } from "react-native";
+
 
 export default function IndexScreen() {
   return (
-      <Text className="text-red-500">meow</Text>
+    <View className="bg-white">
+      <Text
+        className="bg-white text-3xl ml-6">
+        Каталог
+      </Text>
+      <ProductList />
+    </View>
   );
 }
