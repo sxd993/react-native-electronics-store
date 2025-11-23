@@ -1,24 +1,38 @@
-
-import { FlatList, View } from "react-native";
+import { ReactElement, useMemo } from "react";
+import { FlatList } from "react-native";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
 import { useProductList } from "@/features/get-products";
 
-export const ProductList = () => {
+type ProductListProps = {
+  listHeader?: ReactElement | null;
+  searchQuery?: string;
+};
+
+export const ProductList = ({ listHeader, searchQuery }: ProductListProps) => {
   const { products } = useProductList();
 
+  const filteredProducts = useMemo(() => {
+    const query = searchQuery?.trim().toLowerCase();
+    if (!query) return products || [];
+
+    return (products || []).filter((product) =>
+      product.title.toLowerCase().includes(query)
+    );
+  }, [products, searchQuery]);
+
   return (
-    <View className="flex-1">
-      <FlatList
-        data={products}
-        keyExtractor={(product) => product.id.toString()}
-        renderItem={({ item }) => <ProductCard product={item} />}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingTop: 8,
-          paddingHorizontal: 24,
-          paddingBottom: 72,
-        }}
-      />
-    </View>
+    <FlatList
+      data={filteredProducts}
+      className="flex-1"
+      keyExtractor={(product) => product.id.toString()}
+      renderItem={({ item }) => <ProductCard product={item} />}
+      showsVerticalScrollIndicator={false}
+      ListHeaderComponent={listHeader}
+      contentContainerStyle={{
+        gap: 16,
+        paddingHorizontal: 24,
+        paddingBottom: 72,
+      }}
+    />
   );
 };

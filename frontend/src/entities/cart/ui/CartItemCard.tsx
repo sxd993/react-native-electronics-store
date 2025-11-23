@@ -15,8 +15,8 @@ export const CartItemCard = ({ item }: CartItemCardProps) => {
                     {item.image ? (
                         <Image
                             source={{ uri: item.image }}
-                            className="w-full h-20 rounded-xl bg-gray-100"
-                            resizeMode="cover"
+                            className="h-24 w-24 rounded-xl"
+                            resizeMode="contain"
                         />
                     ) : (
                         <View className="w-full h-20 rounded-xl bg-gray-100" />

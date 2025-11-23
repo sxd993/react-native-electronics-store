@@ -7,9 +7,9 @@ export const CartPage = () => {
 
     return (
         <View className="flex-1 bg-white px-6 pb-2">
-            <Text className="text-3xl pb-4">
-                Корзина
-            </Text>
+            <View className="py-6">
+                <Text className="text-4xl font-semibold text-gray-900 tracking-tight">Корзина</Text>
+            </View>
             <View className="flex-1">
                 <CartList />
                 {items.length > 0 && (
