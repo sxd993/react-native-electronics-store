@@ -21,15 +21,15 @@ export const SearchInput = ({ value, onChangeText, placeholder = "Поиск п�
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor="#9ca3af"
-        className="bg-gray-100 rounded-2xl pl-11 pr-11 py-3 text-base text-gray-900"
+        className="bg-white rounded-2xl pl-11 pr-11 py-3 text-base text-gray-900 border border-gray-200 shadow-sm"
       />
 
       {showClear && (
         <Pressable
           onPress={() => onChangeText("")}
-          className="absolute right-3 top-2.5 p-2 rounded-full bg-white border border-gray-200 active:opacity-80"
+          className="absolute right-3 top-2.5 p-2 rounded-full bg-black active:opacity-85"
         >
-          <X size={14} color="#111827" />
+          <X size={14} color="#fff" />
         </Pressable>
       )}
     </View>
