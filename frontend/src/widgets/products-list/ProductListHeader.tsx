@@ -2,14 +2,16 @@ import AppIcon from "assets/images/icon.png";
 import { MapPin } from "lucide-react-native";
 import { Image, Pressable, Text, View } from "react-native";
 
-type AppHeaderBarProps = {
+type ProductListHeaderProps = {
   onChangeCity?: () => void;
   city?: string;
 };
 
-export const AppHeaderBar = ({ onChangeCity, city = "Ваш город" }: AppHeaderBarProps) => {
+export const ProductListHeader = ({
+  onChangeCity, city = "Ваш город",
+}: ProductListHeaderProps) => {
   return (
-    <View className="bg-white border-b border-gray-100 px-3 pb-5 shadow-sm">
+    <View className="bg-white border-b border-gray-100 px-3 shadow-sm min-h-20 justify-center">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-3">
           <Image source={AppIcon} className="w-12 h-12 rounded-xl" />

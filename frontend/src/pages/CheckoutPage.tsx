@@ -1,10 +1,15 @@
-import { View } from "react-native";
+import { View, type ScrollViewProps } from "react-native";
 import { Checkout } from "@/widgets/checkout";
 
-export const CheckoutPage = () => {
+type CheckoutPageProps = {
+  onScroll?: ScrollViewProps["onScroll"];
+  scrollEventThrottle?: number;
+};
+
+export const CheckoutPage = ({ onScroll, scrollEventThrottle }: CheckoutPageProps) => {
   return (
     <View className="flex-1 bg-white">
-      <Checkout />
+      <Checkout onScroll={onScroll} scrollEventThrottle={scrollEventThrottle} />
     </View>
   );
 };

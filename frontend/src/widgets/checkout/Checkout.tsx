@@ -1,8 +1,9 @@
 import { ShoppingBag } from "lucide-react-native";
-import { ScrollView, Text, View } from "react-native";
+import { Text, View, type ScrollViewProps } from "react-native";
+import Animated from "react-native-reanimated";
 import { CartItemsList } from "@/entities/cart/ui/CartItemsList";
 import { CartSummary } from "@/entities/cart/ui/CartSummary";
-import type { CheckoutFormValues, DeliveryOption, PaymentOption } from "@/entities/checkout/model/types";
+import type { CheckoutFormValues } from "@/entities/checkout/model/types";
 import { CheckoutConfirm } from "@/features/checkout-confirm";
 import { DeliveryOptions, PaymentOptions, RecipientSection, useCheckoutForm } from "@/features/checkout-form";
 
@@ -12,9 +13,11 @@ type CheckoutProps = {
     Pick<CheckoutFormValues, "fullName" | "phone" | "address" | "deliveryType" | "paymentType">
   >;
   isLoading?: boolean;
+  onScroll?: ScrollViewProps["onScroll"];
+  scrollEventThrottle?: number;
 };
 
-export const Checkout = ({ onSubmit, defaultValues, isLoading }: CheckoutProps) => {
+export const Checkout = ({ onSubmit, defaultValues, isLoading, onScroll, scrollEventThrottle }: CheckoutProps) => {
   const { fields, setters, cart, payload } = useCheckoutForm({ defaultValues });
   const { fullName, phone, address, deliveryType, paymentType } = fields;
   const { setFullName, setPhone, setAddress, setDeliveryType, setPaymentType } = setters;
@@ -22,8 +25,10 @@ export const Checkout = ({ onSubmit, defaultValues, isLoading }: CheckoutProps) 
 
   return (
     <>
-      <ScrollView
+      <Animated.ScrollView
         className="flex-1"
+        onScroll={onScroll}
+        scrollEventThrottle={scrollEventThrottle ?? 16}
         contentContainerStyle={{ paddingBottom: 120, paddingHorizontal: 24, paddingTop: 24 }}
       >
         <RecipientSection
@@ -54,7 +59,7 @@ export const Checkout = ({ onSubmit, defaultValues, isLoading }: CheckoutProps) 
 
           <CartSummary totalQty={totalQty} totalPrice={totalPrice} />
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
 
       <CheckoutConfirm onSubmit={onSubmit} payload={payload} isLoading={isLoading} />
     </>

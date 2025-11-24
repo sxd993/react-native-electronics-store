@@ -26,15 +26,46 @@ export const ProductDetails = () => {
             </Text>
 
             <Text className="text-gray-600 text-base leading-6 mb-8">
-                {currentProduct?.description}
+                {currentProduct?.category}
             </Text>
 
             <Pressable
-                onPress={() => {}}
+                onPress={() => { }}
                 className="bg-black py-4 rounded-2xl items-center shadow-sm active:opacity-70"
             >
                 <Text className="text-white text-lg font-medium">В корзину</Text>
             </Pressable>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+                        <Text className="text-gray-600 text-base leading-6 mb-8">
+                {currentProduct?.category}
+            </Text>
+            
         </View>
     );
 }

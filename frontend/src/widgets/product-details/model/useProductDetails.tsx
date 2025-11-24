@@ -5,7 +5,7 @@ export const useProductDetails = () => {
 
     // Айди из ссылки
     const { id } = useLocalSearchParams();
-    const urlId = id ? Number(id) : undefined
+    const urlId = id ? String(id) : undefined
 
     // Список всех товаров
     const { products, isLoading, error } = useProductList();
