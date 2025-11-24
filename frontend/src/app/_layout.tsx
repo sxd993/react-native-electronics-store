@@ -1,7 +1,9 @@
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "../../global.css";
 import { AppProvider } from "./providers/AppProvider";
+import { CheckoutHeader } from "@/widgets/checkout/CheckoutHeader";
+
 
 export default function RootLayout() {
   return (
@@ -17,6 +19,14 @@ export default function RootLayout() {
                 headerShown: true,
                 headerBackTitle: 'Back',
                 title: "Товар",
+              }}
+            />
+            <Stack.Screen
+              name="checkout"
+              options={{
+                headerShown: true,
+                header: () => <CheckoutHeader onBack={() => router.back()} />,
+                title: "Оформление",
               }}
             />
           </Stack>
