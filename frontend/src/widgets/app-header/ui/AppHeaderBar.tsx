@@ -9,7 +9,7 @@ type AppHeaderBarProps = {
 
 export const AppHeaderBar = ({ onChangeCity, city = "Ваш город" }: AppHeaderBarProps) => {
   return (
-    <View className="bg-white border-b border-gray-100 px-3 pt-12 pb-5 shadow-sm">
+    <View className="bg-white border-b border-gray-100 px-3 pb-5 shadow-sm">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-3">
           <Image source={AppIcon} className="w-12 h-12 rounded-xl" />

@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import { router } from "expo-router";
 import { CartList, CartSummary } from "@/widgets/cart";
 import { useCartItems } from "@/entities/cart/store/store";
 
@@ -14,7 +15,7 @@ export const CartPage = () => {
                 <CartList />
                 {items.length > 0 && (
                     <View className="absolute bottom-0 left-0 right-0">
-                        <CartSummary />
+                        <CartSummary onCheckout={() => router.push("/checkout")} />
                     </View>
                 )}
             </View>
