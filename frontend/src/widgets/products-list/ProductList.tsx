@@ -23,7 +23,7 @@ export const ProductList = ({ listHeader, searchQuery }: ProductListProps) => {
   return (
     <FlatList
       data={filteredProducts}
-      className="flex-1"
+      className="flex-1 "
       numColumns={2}
       columnWrapperStyle={{justifyContent: 'space-between'}}
       keyExtractor={(product) => product.id.toString()}
@@ -34,6 +34,7 @@ export const ProductList = ({ listHeader, searchQuery }: ProductListProps) => {
         gap: 16,
         paddingHorizontal: 24,
         paddingBottom: 72,
+        paddingTop: 16
       }}
     />
   );
