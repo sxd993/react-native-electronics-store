@@ -24,6 +24,8 @@ export const ProductList = ({ listHeader, searchQuery }: ProductListProps) => {
     <FlatList
       data={filteredProducts}
       className="flex-1"
+      numColumns={2}
+      columnWrapperStyle={{justifyContent: 'space-between'}}
       keyExtractor={(product) => product.id.toString()}
       renderItem={({ item }) => <ProductCard product={item} />}
       showsVerticalScrollIndicator={false}

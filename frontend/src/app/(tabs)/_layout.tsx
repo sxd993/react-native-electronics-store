@@ -1,7 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { CartTabIcon } from "@/shared/icons";
-import { ProductListHeader } from "@/widgets/products-list/ProductListHeader";
+
+
 
 
 export default function TabsLayout() {
@@ -22,8 +23,7 @@ export default function TabsLayout() {
                 name="index"
                 options={{
                     title: "Каталог",
-                    headerShown: true,
-                    header: () => <ProductListHeader city="Москва" />,
+                    headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home-outline" color={color} size={size} />
                     ),

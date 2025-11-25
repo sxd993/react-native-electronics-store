@@ -12,12 +12,10 @@ export const AddToCartButton = ({ product }: AddToCartButtonProps) => {
 
     return (
         <Pressable
-            className="px-4 py-3 rounded-2xl bg-black flex-row items-center gap-2 active:opacity-70"
+            className="w-full px-4 py-3 rounded-2xl bg-black flex-row items-end justify-between"
             onPress={handleAdd}
         >
-            <Text className="text-white font-semibold text-lg">
-                {product.price}$
-            </Text>
+            <Text className="text-white font-semibold text-base">В корзину</Text>
             <Plus width={22} color="#fff" />
         </Pressable>
     );
