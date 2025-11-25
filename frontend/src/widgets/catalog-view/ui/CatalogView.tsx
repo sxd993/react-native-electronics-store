@@ -20,26 +20,26 @@ export const CatalogView = ({ search, onChangeSearch }: Props) => {
             renderHeader={() => <CatalogHeader />}
             headerHeight={120}
         >
-            <Tabs.FlatList
-                data={filtered}
-                numColumns={2}
-                keyExtractor={p => p.id.toString()}
-                renderItem={({ item }) => <ProductCard product={item} />}
-
-                ListHeaderComponent={
-                    <ProductListHeader
-                        search={search}
-                        onChangeSearch={onChangeSearch}
-                    />
-                }
-                stickyHeaderIndices={[0]}
-
-                contentContainerStyle={{
-                    gap: 16,
-                    paddingHorizontal: 24,
-                    paddingBottom: 120,
-                }}
-            />
+            <Tabs.Tab name='Products'>
+                <Tabs.FlatList
+                    data={filtered}
+                    numColumns={2}
+                    keyExtractor={p => p.id.toString()}
+                    renderItem={({ item }) => <ProductCard product={item} />}
+                    ListHeaderComponent={
+                        <ProductListHeader
+                            search={search}
+                            onChangeSearch={onChangeSearch}
+                        />
+                    }
+                    stickyHeaderIndices={[0]}
+                    contentContainerStyle={{
+                        gap: 16,
+                        paddingHorizontal: 24,
+                        paddingBottom: 120,
+                    }}
+                />
+            </Tabs.Tab>
         </Tabs.Container>
     );
 };
