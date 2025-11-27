@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { CartTabIcon } from "@/shared/icons";
 
 
 
@@ -26,14 +25,6 @@ export default function TabsLayout() {
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home-outline" color={color} size={size} />
                     ),
-                }}
-            />
-            <Tabs.Screen
-                name="cart"
-                options={{
-                    title: "Корзина",
-                    headerShown: false,
-                    tabBarIcon: ({ color, size }) => <CartTabIcon color={color} size={size} />,
                 }}
             />
         </Tabs>

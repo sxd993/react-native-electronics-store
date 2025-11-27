@@ -1,9 +1,7 @@
 import { Tabs, } from "react-native-collapsible-tab-view";
-import { ProductListHeader } from "@/widgets/products-list/ProductListHeader";
-import { useProductList } from "@/features/get-products";
+import { useProducts } from "@/features/get-products";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
-import { ChooseCityWidget } from "@/widgets/choose-city";
-import { CatalogHeader } from "@/widgets/catalog-header/CatalogHeader";
+import { CatalogHeader } from "@/widgets/catalog/catalog-header/CatalogHeader";
 
 type Props = {
     search: string;
@@ -13,7 +11,7 @@ type Props = {
 };
 
 export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Props) => {
-    const { products } = useProductList();
+    const { products } = useProducts();
     const filtered = products?.filter(p =>
         p.title.toLowerCase().includes(search.toLowerCase())
     );
@@ -21,7 +19,6 @@ export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Prop
     return (
         <Tabs.Container
             renderTabBar={() => null}
-            renderHeader={() => <CatalogHeader search={search} onChangeSearch={onChangeSearch} onChangeCity={onChangeCity} />}
         >
             <Tabs.Tab name="Products">
                 <Tabs.FlatList
@@ -32,15 +29,20 @@ export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Prop
                     renderItem={({ item }) => (
                         <ProductCard product={item} />
                     )}
+                    ListHeaderComponent={
+                        <CatalogHeader
+                            search={search}
+                            onChangeSearch={onChangeSearch}
+                            onChangeCity={onChangeCity}
+                            city={city}
+                        />
+                    }
                     contentContainerStyle={{
-                        gap: 16,
                         paddingHorizontal: 16,
-                        paddingBottom: 120,
-                        paddingTop: 12,
+                        gap: 16
                     }}
                 />
             </Tabs.Tab>
         </Tabs.Container>
     );
 };
-

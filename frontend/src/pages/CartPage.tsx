@@ -1,11 +1,7 @@
 import { Text, View } from "react-native";
-import { router } from "expo-router";
-import { CartList, CartSummary } from "@/widgets/cart";
-import { useCartItems } from "@/entities/cart/store/store";
+import { CartList } from "@/widgets/cart";
 
 export const CartPage = () => {
-    const items = useCartItems();
-
     return (
         <View className="flex-1 bg-white px-6 pb-2">
             <View className="py-6">
@@ -13,11 +9,6 @@ export const CartPage = () => {
             </View>
             <View className="flex-1">
                 <CartList />
-                {items.length > 0 && (
-                    <View className="absolute bottom-0 left-0 right-0">
-                        <CartSummary onCheckout={() => router.push("/checkout")} />
-                    </View>
-                )}
             </View>
         </View>
     );

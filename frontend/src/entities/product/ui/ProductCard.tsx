@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Pressable
-      className="w-[47%] bg-white rounded-2xl p-3 border border-neutral-200 shadow-[0_4px_16px_rgba(0,0,0,0.05)] max-h-200"
+      className="w-[49%] bg-white rounded-2xl p-3 border border-neutral-200 shadow-[0_4px_16px_rgba(0,0,0,0.05)] max-h-200"
       onPress={() => router.push(`/product/${product.id}`)}
     >
       {/* Картинка и бейджи */}

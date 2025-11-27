@@ -18,8 +18,8 @@ export const CatalogHeader = ({
     onChangeSearch,
 }: CatalogHeaderProps) => {
     return (
-        <View className="p-4">
-            <View className="flex-row items-center justify-between px-4">
+        <View className="pt-4">
+            <View className="flex-row items-center justify-between">
                 <View className="flex-row items-center gap-3">
                     <Image source={AppIcon} className="w-12 h-12 rounded-xl" />
                     <View>

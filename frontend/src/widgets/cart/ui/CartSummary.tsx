@@ -1,26 +1,22 @@
-import { Pressable, Text, View } from 'react-native';
-import { useCartTotalPrice, useCartTotalQty } from '@/entities/cart/store/store';
+import { Pressable, Text, View } from "react-native";
+import { useCartSummary } from "../hooks/useCartSummary";
+import { CartTabIcon } from "@/shared/icons";
 
-type CartSummaryProps = {
-    onCheckout?: () => void;
-};
+export const CartSummary = () => {
+  const { onOpenBottomSheet, totalPrice } = useCartSummary();
 
-export const CartSummary = ({ onCheckout }: CartSummaryProps) => {
-    const totalQty = useCartTotalQty();
-    const totalPrice = useCartTotalPrice();
-
-    return (
-        <View className="p-4 bg-white border-t border-gray-100 shadow-lg rounded-t-3xl">
-            <View className="flex-row justify-between items-center mb-4">
-                <Text className="text-base text-gray-600">Итого ({totalQty} шт)</Text>
-                <Text className="text-xl font-semibold text-gray-900">{totalPrice.toFixed(2)}$</Text>
-            </View>
-            <Pressable
-                className="w-full py-4 rounded-2xl bg-black items-center active:opacity-80"
-                onPress={onCheckout}
-            >
-                <Text className="text-white text-base font-semibold">Оформить</Text>
-            </Pressable>
+  return (
+    <View className="absolute bottom-3 w-full items-center">
+      <Pressable
+        onPress={onOpenBottomSheet}
+        className="w-[80%] flex-row items-center justify-between p-4 bg-blue-500 border-t border-gray-100 shadow-lg rounded-xl"
+      >
+        <View className="flex-row items-center gap-3">
+          <CartTabIcon />
+          <Text className="text-xl text-white">Корзина</Text>
         </View>
-    );
+        <Text className="text-xl text-white">{totalPrice}$</Text>
+      </Pressable>
+    </View>
+  );
 };

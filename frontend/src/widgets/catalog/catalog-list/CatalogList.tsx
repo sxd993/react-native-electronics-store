@@ -3,12 +3,12 @@ import { FlatList } from "react-native";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
 import { useProductList } from "@/features/get-products";
 
-type ProductListProps = {
+type CatalogListProps = {
   listHeader?: ReactElement | null;
   searchQuery?: string;
 };
 
-export const ProductList = ({ listHeader, searchQuery }: ProductListProps) => {
+export const CatalogList = ({ listHeader, searchQuery }: CatalogListProps) => {
   const { products } = useProductList();
 
   const filteredProducts = useMemo(() => {
