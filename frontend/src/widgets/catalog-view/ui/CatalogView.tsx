@@ -1,5 +1,4 @@
-import { Tabs } from "react-native-collapsible-tab-view";
-import { CatalogHeader } from "@/widgets/catalog-header";
+import { Tabs, } from "react-native-collapsible-tab-view";
 import { ProductListHeader } from "@/widgets/products-list/ProductListHeader";
 import { useProductList } from "@/features/get-products";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
@@ -17,15 +16,17 @@ export const CatalogView = ({ search, onChangeSearch }: Props) => {
 
     return (
         <Tabs.Container
-            renderHeader={() => <CatalogHeader />}
-            headerHeight={120}
+            renderTabBar={() => null}
         >
-            <Tabs.Tab name='Products'>
+            <Tabs.Tab name="Products">
                 <Tabs.FlatList
                     data={filtered}
                     numColumns={2}
                     keyExtractor={p => p.id.toString()}
-                    renderItem={({ item }) => <ProductCard product={item} />}
+                    columnWrapperStyle={{ justifyContent: "space-between" }}
+                    renderItem={({ item }) => (
+                        <ProductCard product={item} />
+                    )}
                     ListHeaderComponent={
                         <ProductListHeader
                             search={search}
@@ -43,3 +44,5 @@ export const CatalogView = ({ search, onChangeSearch }: Props) => {
         </Tabs.Container>
     );
 };
+
+

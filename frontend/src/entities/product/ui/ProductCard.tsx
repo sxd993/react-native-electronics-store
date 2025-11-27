@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Pressable
-      className="w-[47%] bg-white rounded-2xl p-3 border border-neutral-200 shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
+      className="w-[47%] bg-white rounded-2xl p-3 border border-neutral-200 shadow-[0_4px_16px_rgba(0,0,0,0.05)] max-h-200"
       onPress={() => router.push(`/product/${product.id}`)}
     >
       {/* Картинка и бейджи */}
@@ -36,32 +36,33 @@ export const ProductCard = ({ product }: { product: Product }) => {
         </View>
       </View>
 
-      {/* Название и детали */}
-      <View className="mt-3 gap-1">
-        <Text
-          numberOfLines={2}
-          className="text-[15px] font-semibold text-black leading-5"
-        >
-          {product.title}
-        </Text>
-        <Text className="text-[12px] text-neutral-500">
-          {product.brand || product.category || "Категория неизвестна"}
-        </Text>
-      </View>
-
-      {/* Цена и рейтинг */}
-      <View className="mt-2 gap-1">
-        <View className="flex-row items-end gap-2">
-          <Text className="text-[18px] font-bold text-black">{product.price} ₽</Text>
-          <Text className="text-[12px] text-neutral-400 line-through">{oldPrice} ₽</Text>
-        </View>
-        <View className="flex-row items-center gap-1">
-          <StarIcon size={16} color="#FFC107" />
-          <Text className="text-[13px] text-black">
-            {product.reviews_count && product.reviews_count > 0
-              ? `${product.reviews_count} рейтинг`
-              : "Нет рейтинга"}
+      {/* Название, детали и цена */}
+      <View className="mt-3 flex-1">
+        <View className="gap-1">
+          <Text
+            numberOfLines={2}
+            className="text-[15px] font-semibold text-black leading-5"
+          >
+            {product.title}
           </Text>
+          <Text className="text-[12px] text-neutral-500">
+            {product.brand || product.category || "Категория неизвестна"}
+          </Text>
+        </View>
+
+        <View className="mt-2 gap-1">
+          <View className="flex-row items-end gap-2">
+            <Text className="text-[18px] font-bold text-black">{product.price} ₽</Text>
+            <Text className="text-[12px] text-neutral-400 line-through">{oldPrice} ₽</Text>
+          </View>
+          <View className="flex-row items-center gap-1">
+            <StarIcon size={16} color="#FFC107" />
+            <Text className="text-[13px] text-black">
+              {product.reviews_count && product.reviews_count > 0
+                ? `${product.reviews_count} рейтинг`
+                : "Нет рейтинга"}
+            </Text>
+          </View>
         </View>
       </View>
 

@@ -11,7 +11,7 @@ export const CatalogHeader = ({
   onChangeCity, city = "Ваш город",
 }: CatalogHeaderProps) => {
   return (
-    <View className="bg-white border-b border-gray-100 px-3 shadow-sm min-h-20 justify-center">
+    <View className="bg-white border-b border-gray-100 px-3 shadow-sm justify-center">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-3">
           <Image source={AppIcon} className="w-12 h-12 rounded-xl" />

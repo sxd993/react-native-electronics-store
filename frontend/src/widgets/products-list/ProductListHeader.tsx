@@ -12,11 +12,9 @@ export const ProductListHeader = ({
   onChangeSearch,
 }: ProductListHeaderProps) => {
   return (
-    <View className="pt-6 pb-4 px-6">
-      <View>
-        <SearchInput value={search} onChangeText={onChangeSearch} />
-      </View>
-      <View className="mt-3">
+    <View className=" flex-row items-center">
+      <SearchInput value={search} onChangeText={onChangeSearch} />
+      <View className="ml-4">
         <FiltersBar />
       </View>
     </View>

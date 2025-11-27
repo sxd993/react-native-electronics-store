@@ -11,17 +11,13 @@ export const SearchInput = ({ value, onChangeText, placeholder = "Поиск п�
   const showClear = value.length > 0;
 
   return (
-    <View className="relative">
-      <View className="absolute left-4 top-3.5">
-        <Search size={18} color="#111827" />
-      </View>
-
+    <View className=" flex-1">
       <TextInput
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor="#9ca3af"
-        className="bg-white rounded-2xl pl-11 pr-11 py-3 text-base text-gray-900 border border-gray-200 shadow-sm"
+        className="bg-white rounded-2xl pl-11 pr-11 py-3 text-base text-gray-900 border border-gray-200 shadow-sm flex-1"
       />
 
       {showClear && (

@@ -1,3 +1,4 @@
+import { FilterIcon } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
@@ -7,11 +8,10 @@ export const FiltersBar = () => {
   return (
     <View>
       <Pressable
-        className="flex-row items-center justify-between px-4 py-3 rounded-2xl bg-black active:opacity-90 shadow-sm"
+        className="h-12 w-12 items-center justify-center rounded-2xl bg-black active:opacity-85"
         onPress={() => setIsOpen((prev) => !prev)}
       >
-        <Text className="text-white text-base font-semibold">Все фильтры</Text>
-        <Text className="text-white text-lg">{isOpen ? "−" : "+"}</Text>
+        <FilterIcon color="white" size={22} />
       </Pressable>
 
       {isOpen && (
