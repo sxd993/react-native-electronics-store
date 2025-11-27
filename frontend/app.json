@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fsd-react-native-template",
-    "slug": "fsd-react-native-template",
+    "name": "react-native-electronics-store",
+    "slug": "react-native-electronics-store",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
