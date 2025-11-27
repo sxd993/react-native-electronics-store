@@ -2,13 +2,17 @@ import { Tabs, } from "react-native-collapsible-tab-view";
 import { ProductListHeader } from "@/widgets/products-list/ProductListHeader";
 import { useProductList } from "@/features/get-products";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
+import { ChooseCityWidget } from "@/widgets/choose-city";
+import { CatalogHeader } from "@/widgets/catalog-header/CatalogHeader";
 
 type Props = {
     search: string;
     onChangeSearch: (s: string) => void;
+    city?: string;
+    onChangeCity?: () => void;
 };
 
-export const CatalogView = ({ search, onChangeSearch }: Props) => {
+export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Props) => {
     const { products } = useProductList();
     const filtered = products?.filter(p =>
         p.title.toLowerCase().includes(search.toLowerCase())
@@ -17,6 +21,7 @@ export const CatalogView = ({ search, onChangeSearch }: Props) => {
     return (
         <Tabs.Container
             renderTabBar={() => null}
+            renderHeader={() => <CatalogHeader search={search} onChangeSearch={onChangeSearch} onChangeCity={onChangeCity} />}
         >
             <Tabs.Tab name="Products">
                 <Tabs.FlatList
@@ -27,22 +32,15 @@ export const CatalogView = ({ search, onChangeSearch }: Props) => {
                     renderItem={({ item }) => (
                         <ProductCard product={item} />
                     )}
-                    ListHeaderComponent={
-                        <ProductListHeader
-                            search={search}
-                            onChangeSearch={onChangeSearch}
-                        />
-                    }
-                    stickyHeaderIndices={[0]}
                     contentContainerStyle={{
                         gap: 16,
-                        paddingHorizontal: 24,
+                        paddingHorizontal: 16,
                         paddingBottom: 120,
+                        paddingTop: 12,
                     }}
                 />
             </Tabs.Tab>
         </Tabs.Container>
     );
 };
-
 
