@@ -1,32 +1,27 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { CatalogPage } from '@/pages/CatalogPage';
+import { TabBar } from '@/widgets/bottom-navigation/TabBar';
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+const Tab = createBottomTabNavigator();
 
-
-
-export default function TabsLayout() {
+export default function MyTabs() {
     return (
-        <Tabs screenOptions={{
-            tabBarActiveTintColor: "#2563eb",
-            headerShown: false,
-            tabBarStyle: {
-                height: 55,
-                paddingBottom: 6,
-                paddingTop: 6,
-                backgroundColor: "#fff",
-                borderTopWidth: 1,
-                borderTopColor: "#e5e7eb",
-            },
-        }}>
-            <Tabs.Screen
-                name="index"
+        <Tab.Navigator
+            tabBar={(props) => <TabBar {...props} />}
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Tab.Screen
+                name='Главная'
+                component={CatalogPage}
                 options={{
-                    title: "Каталог",
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home-outline" color={color} size={size} />
+                        <Ionicons name="home-outline" size={size} color={color} />
                     ),
                 }}
             />
-        </Tabs>
-    )
+        </Tab.Navigator>
+    );
 }
