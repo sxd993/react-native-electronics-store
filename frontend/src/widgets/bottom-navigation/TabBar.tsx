@@ -1,86 +1,68 @@
+import React from "react";
+import { View } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Pressable, Text, View } from "react-native";
+import { TabBarButton } from "./TabBarButton";
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-    const inset = useSafeAreaInsets();
+  const inset = useSafeAreaInsets();
 
-    return (
-        <View
-            className="absolute left-4 right-4 flex-row items-center justify-between rounded-full bg-white"
-            style={{
-                bottom: inset.bottom ? inset.bottom + 12 : 12,
-                paddingVertical: 10,
-                paddingHorizontal: 12,
-                shadowColor: "#000",
-                shadowOpacity: 0.08,
-                shadowRadius: 12,
-                shadowOffset: { width: 0, height: 8 },
-                elevation: 8,
-            }}
-        >
-            {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-                const label =
-                    options.tabBarLabel ??
-                    options.title ??
-                    route.name;
+  return (
+    <View
+      className="absolute self-center flex-row items-center justify-center rounded-3xl bg-white border border-slate-200 shadow-lg px-3"
+      style={{
+        bottom: inset.bottom ? inset.bottom + 12 : 12,
+      }}
+    >
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const rawLabel = options.tabBarLabel ?? options.title ?? route.name;
+        const label = typeof rawLabel === "string" ? rawLabel : route.name;
 
-                const isFocused = state.index === index;
-                const activeColor = options.tabBarActiveTintColor ?? "#0f172a";
-                const inactiveColor = options.tabBarInactiveTintColor ?? "#94a3b8";
-                const color = isFocused ? activeColor : inactiveColor;
+        const isFocused = state.index === index;
+        const activeColor = options.tabBarActiveTintColor ?? "#0f172a";
+        const inactiveColor = options.tabBarInactiveTintColor ?? "#94a3b8";
+        const color = isFocused ? activeColor : inactiveColor;
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: "tabPress",
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+            canPreventDefault: true,
+          });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name, route.params);
-                    }
-                };
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name, route.params);
+          }
+        };
 
-                const onLongPress = () => {
-                    navigation.emit({
-                        type: "tabLongPress",
-                        target: route.key,
-                    });
-                };
+        const onLongPress = () => {
+          navigation.emit({
+            type: "tabLongPress",
+            target: route.key,
+          });
+        };
 
-                const icon = options.tabBarIcon?.({
-                    focused: isFocused,
-                    color,
-                    size: 22,
-                });
+        const icon = options.tabBarIcon?.({
+          focused: isFocused,
+          color,
+          size: 100,
+        });
 
-                return (
-                    <Pressable
-                        key={route.name}
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarButtonTestID}
-                        onPress={onPress}
-                        onLongPress={onLongPress}
-                        className="flex-1 items-center justify-center"
-                        style={{
-                            paddingVertical: 6,
-                            borderRadius: 999,
-                            backgroundColor: isFocused ? "#f8fafc" : "transparent",
-                        }}
-                    >
-                        {icon}
-                        <Text
-                            className="text-[11px] font-semibold mt-1"
-                            style={{ color }}
-                        >
-                            {label}
-                        </Text>
-                    </Pressable>
-                );
-            })}
-        </View>
-    );
+        return (
+          <TabBarButton
+            key={route.key}
+            label={label}
+            icon={icon}
+            isFocused={isFocused}
+            labelColor={color}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarButtonTestID}
+          />
+        );
+      })}
+    </View>
+  );
 }

@@ -16,11 +16,12 @@ export default function MyTabs() {
             <Tab.Screen
                 name='Главная'
                 component={CatalogPage}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home-outline" size={size} color={color} />
-                    ),
-                }}
+                options={{ tabBarIcon: () => <Ionicons name="home-outline" size={26} /> }}
+            />
+            <Tab.Screen
+                name='Избранное'
+                component={CatalogPage}
+                options={{ tabBarIcon: () => <Ionicons name="home-outline" size={26} /> }}
             />
         </Tab.Navigator>
     );

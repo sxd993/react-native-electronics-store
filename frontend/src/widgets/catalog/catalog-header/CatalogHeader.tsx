@@ -16,12 +16,10 @@ export const CatalogHeader = ({
     onChangeSearch,
 }: CatalogHeaderProps) => {
     return (
-        <View>
-            <View className="flex-row items-center px-4 mt-4">
+        <View className="pt-12">
+            <View className="flex-row items-center px-4 mt-4 gap-5">
                 <SearchInput value={search} onChangeText={onChangeSearch} />
-                <View className="ml-4">
-                    <FiltersBar />
-                </View>
+                <FiltersBar />
             </View>
         </View>
     );

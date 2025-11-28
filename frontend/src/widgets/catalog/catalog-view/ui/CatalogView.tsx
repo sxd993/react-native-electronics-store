@@ -18,6 +18,7 @@ export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Prop
 
     return (
         <Tabs.Container
+        сlas
             renderTabBar={() => null}
         >
             <Tabs.Tab name="Products">
@@ -39,7 +40,7 @@ export const CatalogView = ({ search, onChangeSearch, city, onChangeCity }: Prop
                     }
                     contentContainerStyle={{
                         paddingHorizontal: 16,
-                        gap: 16
+                        gap: 20
                     }}
                 />
             </Tabs.Tab>
