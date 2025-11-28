@@ -21,7 +21,7 @@ export default function MyTabs() {
             <Tab.Screen
                 name='Избранное'
                 component={CatalogPage}
-                options={{ tabBarIcon: () => <Ionicons name="home-outline" size={26} /> }}
+                options={{ tabBarIcon: () => <Ionicons name="heart" size={26} color={'#f5554a'} /> }}
             />
         </Tab.Navigator>
     );
